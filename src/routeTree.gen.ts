@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as QualityRouteImport } from './routes/quality'
 
@@ -36,6 +37,11 @@ const InfrastructureRoute = InfrastructureRouteImport.update({
   path: '/infrastructure',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/capabilities': typeof CapabilitiesRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/portfolio': typeof PortfolioRoute
   '/products': typeof ProductsRoute
   '/quality': typeof QualityRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/capabilities': typeof CapabilitiesRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/portfolio': typeof PortfolioRoute
   '/products': typeof ProductsRoute
   '/quality': typeof QualityRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/capabilities': typeof CapabilitiesRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/portfolio': typeof PortfolioRoute
   '/products': typeof ProductsRoute
   '/quality': typeof QualityRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/capabilities'
     | '/infrastructure'
+    | '/portfolio'
     | '/products'
     | '/quality'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/capabilities'
     | '/infrastructure'
+    | '/portfolio'
     | '/products'
     | '/quality'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/capabilities'
     | '/infrastructure'
+    | '/portfolio'
     | '/products'
     | '/quality'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CapabilitiesRoute: typeof CapabilitiesRoute
   InfrastructureRoute: typeof InfrastructureRoute
+  PortfolioRoute: typeof PortfolioRoute
   ProductsRoute: typeof ProductsRoute
   QualityRoute: typeof QualityRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InfrastructureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CapabilitiesRoute: CapabilitiesRoute,
   InfrastructureRoute: InfrastructureRoute,
+  PortfolioRoute: PortfolioRoute,
   ProductsRoute: ProductsRoute,
   QualityRoute: QualityRoute,
 }
