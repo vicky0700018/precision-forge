@@ -1,24 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Capabilities } from "@/components/sections/Capabilities";
+import { Facilities, Instruments } from "@/components/sections/Facilities";
+import { Products } from "@/components/sections/Products";
+import { QualityPolicy, QualityObjectives, Certifications } from "@/components/sections/Quality";
+import { Customers, Team, WhyChooseUs } from "@/components/sections/Customers";
+import { Portfolio, Gallery } from "@/components/sections/Portfolio";
+import { CtaBand, Contact } from "@/components/sections/Contact";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "TechnoPerfect Engineers LLP | Precision Engineering & Manufacturing";
+const description =
+  "TechnoPerfect Engineers LLP specializes in precision machining, hydraulic pump components, sub-assemblies and industrial engineering solutions from Yadrav, Kolhapur, Maharashtra.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SiteLayout>
+      <Hero />
+      <About />
+      <Capabilities />
+      <Facilities />
+      <Instruments />
+      <Products />
+      <QualityPolicy />
+      <QualityObjectives />
+      <Certifications />
+      <Customers />
+      <Team />
+      <WhyChooseUs />
+      <Portfolio />
+      <Gallery />
+      <CtaBand />
+      <Contact />
+    </SiteLayout>
   );
 }

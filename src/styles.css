@@ -132,6 +132,43 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme {
+  --color-navy: oklch(0.29 0.062 244.5);
+  --color-navy-deep: oklch(0.23 0.055 244.5);
+  --color-brand: oklch(0.52 0.135 240.5);
+  --color-brand-dark: oklch(0.44 0.12 242);
+  --color-cyan-accent: oklch(0.68 0.135 231);
+  --color-steel: oklch(0.55 0.033 257);
+  --color-mist: oklch(0.968 0.007 247.9);
+  --color-ink: oklch(0.21 0.035 265);
+}
+
+@utility tech-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-brand) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-brand) 12%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility tech-grid-dark {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -139,6 +176,19 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--color-foreground);
+    color: var(--color-ink);
+    font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan-accent);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
   }
 }
+
